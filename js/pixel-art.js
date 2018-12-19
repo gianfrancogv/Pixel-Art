@@ -44,6 +44,13 @@ function crearGrilla() {
 generarPaleta();
 crearGrilla();
 
+$(document).ready(function(){
+  $(".color-paleta").click(function(){
+    var $color = $(this).css("background-color");
+    $("#indicador-de-color").animate({"background-color": $color});
+  });
+});
+
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
 var colorPersonalizado = document.getElementById('color-personalizado');
