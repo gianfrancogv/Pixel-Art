@@ -46,8 +46,11 @@ crearGrilla();
 
 $(document).ready(function(){
   $(".color-paleta").click(function(){
-    var $color = $(this).css("background-color");
-    $("#indicador-de-color").animate({"background-color": $color});
+    var $colorSeleccionado = $(this).css("background-color");
+    $("#indicador-de-color").animate({"background-color": $colorSeleccionado});
+    $("#grilla-pixeles div").click(function(){
+      $(this).css("background-color", $colorSeleccionado);
+    });
   });
 });
 
