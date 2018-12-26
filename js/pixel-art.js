@@ -48,6 +48,8 @@ crearGrilla();
 
 $(document).ready(function(){
 
+  var $pixeles = $("#grilla-pixeles div");
+
   //Seleccionar color de la paleta para el indicador de color:
 
   $(".color-paleta").click(function(){
@@ -63,7 +65,9 @@ $(document).ready(function(){
     });
 
     //Funcion que detecta que el mouse sale del pixel para pintar el siguiente:
-    $("#grilla-pixeles div").mouseout(function(){
+    $($pixeles).mousedown(function(){
+      $(this).css("background-color", $colorSeleccionado);
+    }).mouseenter(function(){
       if($mousePresionado) {
         $(this).css("background-color", $colorSeleccionado);
       };
@@ -71,6 +75,11 @@ $(document).ready(function(){
 
   });
   
+  //Borrar pantalla con animación:
+  $("#borrar").click(function(){
+      $($pixeles).animate({"background-color": "white"}, 1000);      
+  });
+
 });
 
 // Variable para guardar el elemento 'color-personalizado'
