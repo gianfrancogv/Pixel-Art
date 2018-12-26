@@ -44,14 +44,33 @@ function crearGrilla() {
 generarPaleta();
 crearGrilla();
 
+// jQuery:
+
 $(document).ready(function(){
+
+  //Seleccionar color de la paleta para el indicador de color:
+
   $(".color-paleta").click(function(){
     var $colorSeleccionado = $(this).css("background-color");
     $("#indicador-de-color").animate({"background-color": $colorSeleccionado});
-    $("#grilla-pixeles div").click(function(){
-      $(this).css("background-color", $colorSeleccionado);
+    
+    //Variable que valida si el mouse está presionado o no, para pintar en movimiento:
+    var $mousePresionado = false;
+    $(document).mousedown(function(){
+      $mousePresionado = true;
+    }).mouseup(function(){
+      $mousePresionado = false;  
     });
+
+    //Funcion que detecta que el mouse sale del pixel para pintar el siguiente:
+    $("#grilla-pixeles div").mouseout(function(){
+      if($mousePresionado) {
+        $(this).css("background-color", $colorSeleccionado);
+      };
+    });
+
   });
+  
 });
 
 // Variable para guardar el elemento 'color-personalizado'
