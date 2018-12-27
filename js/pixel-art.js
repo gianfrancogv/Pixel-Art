@@ -98,6 +98,12 @@ $(document).ready(function(){
 
 });
 
+//Guardar Pixel-Art:
+
+$("#guardar").click(function(){
+  guardarPixelArt();
+});
+
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
 var colorPersonalizado = document.getElementById('color-personalizado');
