@@ -77,7 +77,23 @@ $(document).ready(function(){
   
   //Borrar pantalla con animación:
   $("#borrar").click(function(){
-      $($pixeles).animate({"background-color": "white"}, 1000);      
+    $($pixeles).animate({"background-color": "none"}, 1000);      
+  });
+
+  //Cargar superheroe:
+
+  var $imagenesSuperheroes = $(".imgs li img");
+  
+  $($imagenesSuperheroes).click(function(){
+    if ($(this).attr("id") == "batman") {
+      cargarSuperheroe(batman);
+    } else if ($(this).attr("id") == "wonder") {
+      cargarSuperheroe(wonder);
+    } else if ($(this).attr("id") == "flash") {
+      cargarSuperheroe(flash);
+    } else {
+      cargarSuperheroe(invisible);
+    };
   });
 
 });
