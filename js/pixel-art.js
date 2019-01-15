@@ -21,7 +21,6 @@ var nombreColores = ['White', 'LightYellow',
 ];
 
 // Funciones que generan la paleta de colores y crean la grilla de pixels;
-
 var paleta = document.getElementById("paleta");
 var grillaPixeles = document.getElementById("grilla-pixeles");
 
@@ -49,30 +48,34 @@ crearGrilla();
 $(document).ready(function(){
 
   var $pixeles = $("#grilla-pixeles div");
+  var $colorSeleccionado;
 
   //Seleccionar color de la paleta para el indicador de color:
-
   $(".color-paleta").click(function(){
-    var $colorSeleccionado = $(this).css("background-color");
+    $colorSeleccionado = $(this).css("background-color");
     $("#indicador-de-color").animate({"background-color": $colorSeleccionado});
-    
-    //Variable que valida si el mouse está presionado o no, para pintar en movimiento:
-    var $mousePresionado = false;
-    $(document).mousedown(function(){
-      $mousePresionado = true;
-    }).mouseup(function(){
-      $mousePresionado = false;  
-    });
+  });
 
-    //Funcion que detecta que el mouse sale del pixel para pintar el siguiente:
-    $($pixeles).mousedown(function(){
+  //Rueda de colores
+  $("#color-personalizado").change(function(){
+    $colorSeleccionado = this.value;
+  });
+  
+  //Variable que valida si el mouse está presionado o no, para pintar en movimiento:
+  var $mousePresionado = false;
+  $(document).mousedown(function(){
+    $mousePresionado = true;
+  }).mouseup(function(){
+    $mousePresionado = false;  
+  });
+
+  //Funcion que detecta que el mouse sale del pixel para pintar el siguiente:
+  $($pixeles).mousedown(function(){
+    $(this).css("background-color", $colorSeleccionado);
+  }).mouseenter(function(){
+    if($mousePresionado) {
       $(this).css("background-color", $colorSeleccionado);
-    }).mouseenter(function(){
-      if($mousePresionado) {
-        $(this).css("background-color", $colorSeleccionado);
-      };
-    });
-
+    };
   });
   
   //Borrar pantalla con animación:
@@ -81,7 +84,6 @@ $(document).ready(function(){
   });
 
   //Cargar superheroe:
-
   var $imagenesSuperheroes = $(".imgs li img");
   
   $($imagenesSuperheroes).click(function(){
@@ -99,21 +101,6 @@ $(document).ready(function(){
 });
 
 //Guardar Pixel-Art:
-
 $("#guardar").click(function(){
   guardarPixelArt();
 });
-
-// Variable para guardar el elemento 'color-personalizado'
-// Es decir, el que se elige con la rueda de color.
-var colorPersonalizado = document.getElementById('color-personalizado');
-
-colorPersonalizado.addEventListener('change', 
-  (function() {
-    // Se guarda el color de la rueda en colorActual
-    colorActual = colorPersonalizado.value;
-    // Completar para que cambie el indicador-de-color al colorActual
-
-
-  })
-);
