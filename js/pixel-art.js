@@ -50,6 +50,19 @@ $(document).ready(function(){
   var $pixeles = $("#grilla-pixeles div");
   var $colorSeleccionado;
 
+  //Animar cada color de la paleta, agrandandolo cuando el mouse pasa sobre el:
+  $(".color-paleta").hover(function(){
+    $(this).animate({
+      "width": "18px",
+      "height": "18px"
+    }, 100)
+  }, function(){
+    $(this).animate({
+      "width": "15px",
+      "height": "15px"
+    }, 100)
+  });
+
   //Seleccionar color de la paleta para el indicador de color:
   $(".color-paleta").click(function(){
     $colorSeleccionado = $(this).css("background-color");
