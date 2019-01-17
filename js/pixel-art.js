@@ -30,15 +30,15 @@ function generarPaleta() {
     nuevoElemento.style.backgroundColor = nombreColores[i];
     nuevoElemento.className = "color-paleta";
     paleta.appendChild(nuevoElemento);
-  }
-}
+  };
+};
 
 function crearGrilla() {
   for (var i = 0; i < 1750; i++) {
     var nuevoElemento = document.createElement("div");
     grillaPixeles.appendChild(nuevoElemento);
-  }
-}
+  };
+};
 
 generarPaleta();
 crearGrilla();
